@@ -12,15 +12,9 @@ export GEM_HOME=$bp_dir/vendor/gems
 export GEM_PATH=$bp_dir/vendor/gems
 
 env_dir=$1
-whitelist_regex=${2:-'BUILDPACK_BRANCH'}
-blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH)$'}
-if [ -d "$env_dir" ]; then
-  for e in $(ls $env_dir); do
-    echo "$e" | grep -E "$whitelist_regex" | grep -qvE "$blacklist_regex" &&
-    export "$e=$(cat $env_dir/$e)"
-    :
-  done
-fi
+echo $(ls $env_dir)
+echo $(cat $env_dir/BUILDPACK_BRANCH)
+
 
 echo "---> Installing parseconfig gem"
 gem install 'parseconfig'
