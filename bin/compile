@@ -14,6 +14,7 @@ export GEM_PATH=$bp_dir/vendor/gems
 env_dir=$1
 echo $(ls $env_dir)
 echo $(cat $env_dir/BUILDPACK_BRANCH)
+echo $BUILDPACK_BRANCH
 
 
 echo "---> Installing parseconfig gem"
