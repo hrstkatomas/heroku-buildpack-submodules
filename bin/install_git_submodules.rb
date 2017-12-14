@@ -6,7 +6,7 @@ require 'parseconfig'
 config = ParseConfig.new("#{ENV['BUILD_DIR']}/.gitmodules")
 
 puts "---> Buildpack environment variables"
-puts ENV['BUILD_DIR'], ENV['CACHE_DIR'], ENV['ENV_DIR'],
+puts ENV['BUILD_DIR'], ENV['CACHE_DIR'], ENV['ENV_DIR']
 puts ENV
 
 config.get_params.each do |param|
