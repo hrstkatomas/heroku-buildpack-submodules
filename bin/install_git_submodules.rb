@@ -5,9 +5,18 @@ require 'parseconfig'
 
 config = ParseConfig.new("#{ENV['BUILD_DIR']}/.gitmodules")
 
-puts "---> Buildpack environment variables"
-puts ENV['BUILD_DIR'], ENV['CACHE_DIR'], ENV['ENV_DIR']
-puts ENV
+lines = []
+File.open("#{ENV['BUILD_DIR']}/.git/HEAD", "r") do |f|
+  f.each_line do |line|
+    lines << line
+  end
+end
+puts 'CUSTOM LOG'
+puts lines
+branch = lines[0].sub('ref: refs/heads/', '').gsub("\n",'')
+puts branch
+puts 'CUSTOM LOG END'
+
 
 config.get_params.each do |param|
   next unless param.match(/^submodule/)
