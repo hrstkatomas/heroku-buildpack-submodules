@@ -5,12 +5,6 @@ require 'parseconfig'
 
 config = ParseConfig.new("#{ENV['BUILD_DIR']}/.gitmodules")
 
-puts 'CUSTOM LOG'
-branch = ENV['PROJECT_BRANCH']
-puts branch
-puts 'CUSTOM LOG END'
-
-
 config.get_params.each do |param|
   next unless param.match(/^submodule/)
   c = config[param]
