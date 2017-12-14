@@ -5,15 +5,8 @@ require 'parseconfig'
 
 config = ParseConfig.new("#{ENV['BUILD_DIR']}/.gitmodules")
 
-lines = []
-File.open("#{ENV['BUILD_DIR']}/.git/HEAD", "r") do |f|
-  f.each_line do |line|
-    lines << line
-  end
-end
 puts 'CUSTOM LOG'
-puts lines
-branch = lines[0].sub('ref: refs/heads/', '').gsub("\n",'')
+branch = ENV['PROJECT_BRANCH']
 puts branch
 puts 'CUSTOM LOG END'
 
