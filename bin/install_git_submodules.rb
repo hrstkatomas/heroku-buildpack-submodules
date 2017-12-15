@@ -8,7 +8,7 @@ config.get_params.each do |param|
   next unless param.match(/^submodule/)
   c = config[param]
 
-  branch_flag = "master"
+  branch_flag = "-b master"
   puts "---> Installing submodule #{c["path"]} #{branch_flag}"
   `git clone #{c["url"]} #{branch_flag} #{ENV['BUILD_DIR']}/#{c["path"]}`
 
